@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="{%static 'css/invoice-template-1.css' %}" media="all" />
+        <title>Receipt example</title>
+    </head>
+    <body>
+        <div class="ticket">
+            <h1 class="centered">Aslam Traders</h1>
+            <p class="centered">
+                Deals in all kind of <br> Beverages
+                </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="quantity">Qunatity.</th>
+                        <th class="description">Description</th>
+                        <th class="price">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for item in lineitem %}
+                    <tr>
+                      <td class="quantity">{{item.quantity}}</td>
+                      <td class="description">{{item.item.name}}</td>
+                      <td class="price">{{item.amount}}</td>
+                    </tr>
+                   {% endfor %}
+                </tbody>
+            </table>
+            <p class="centered">Thanks for your purchase!
+            </p>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
